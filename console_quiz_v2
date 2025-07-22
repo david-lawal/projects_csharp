@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace console_quiz_v2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Multiplication Quiz (version 2.0)");
+
+            bool playAgain; //give user option to play again
+
+            do
+            {
+                
+                Play();
+                Console.Write("\n Would you like to play again? (y/n): ");
+                playAgain = Console.ReadLine().ToLower() == "y";
+                Console.Clear();
+
+            } while (playAgain);
+
+            Console.WriteLine("Thanks for playing! Goodbye!");
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        static void Play()
+        {
+            //ask user to select difficulty level
+            Console.WriteLine("Select difficulty level:");
+            Console.WriteLine("1: Easy (1-10)\n2: Medium (1-20)\n3: Hard(1-50)");
+            int max = ChooseDifficulty();
+
+            int score = 0;
+            int totalQuestions = 10;
+            Random rand = new Random();
+            List<string> history = new List<string>();
+
+            for (int i = 1; i < totalQuestions + 1; i++)
+            { 
+                int a = rand.Next(1, max + 1);
+                int b = rand.Next(1, max + 1);
+
+                Console.Write("\nQuestion {0}: What is {1} x {2} ", i, a, b);
+
+                int userAnswer = GetValidInput();
+                int correctAnswer = a * b;
+
+                if (userAnswer == correctAnswer)
+                {
+                    Console.WriteLine("Correct!");
+                    score++;
+                    history.Add($"Question {i}: {a} x {b} = {userAnswer} (Correct)");
+                }
+                else 
+                {
+                    Console.WriteLine("Incorrect! The correct answer {0}", correctAnswer);
+                    history.Add($"Question {i}: {a} x {b} = {userAnswer} (Ans: {correctAnswer})");
+                }
+            }
+
+            //show score
+            Console.WriteLine("\nQuiz complete! Here's how you did:");
+            foreach (string record in history) 
+            {
+                Console.WriteLine(record);
+            }
+            Console.WriteLine($"\nFinal Score: {score}/{totalQuestions}");
+
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        static int ChooseDifficulty()
+        {
+            while (true)
+            { 
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1": return 10;
+                    case "2": return 20;
+                    case "3": return 50;
+                    default:
+                        Console.WriteLine("Invalid choice. Please select 1, 2 or 3");
+                        break;
+                }
+            }
+        }
+
+        static int GetValidInput()
+        {
+            while (true)
+            { 
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out int result))
+                return result;
+            Console.Write("Invalid input. Please enter a number: ");
+            }
+        }
+    }
+}
