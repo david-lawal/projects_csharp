@@ -10,3 +10,6 @@ REMOVES difficulty
 
 Console Quiz - Version 3.1
 ADDS difficulty
+
+Rock Paper Scissors - Version 1
+Simplistic format (Best of (3/5/10), Ask user, Show CPU output, Determine winner)
