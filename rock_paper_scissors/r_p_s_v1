@@ -1,0 +1,242 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rock_paper_scissors_v1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Rock Paper Scissors (version 1.0)");
+
+            bool playAgain; //give user option to play again
+
+            do
+            {
+
+                Play();
+                Console.Write("\n Would you like to play again? (y/n): ");
+                playAgain = Console.ReadLine().ToLower() == "y";
+                Console.Clear();
+
+            } while (playAgain);
+
+            Console.WriteLine("Thanks for playing! Goodbye!");
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        static void Play()
+        {
+            Console.WriteLine("First to: 3, 5 or 10");
+            int gameChoice = Convert.ToInt32(Console.ReadLine());
+
+            int userWin = 0;
+            int enemyWin = 0;
+            Random rand = new Random();
+
+
+            if (gameChoice == 3)
+            {
+                do
+                {
+                    //get user to select
+                    Console.Write("\nRock Paper Scissors Shoot!       ");
+                    string userChoice = Console.ReadLine().ToLower();
+
+                    //choose enemy's option 
+                    int enemyChoice = rand.Next(1, 4);
+
+                    if (enemyChoice == 1)
+                    {
+                        string option = "Rock";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "paper") Win(ref userWin);
+                        if (userChoice == "rock") Draw();
+                        if (userChoice == "scissors") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 2)
+                    {
+                        string option = "Paper";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "scissors") Win(ref userWin);
+                        if (userChoice == "paper") Draw();
+                        if (userChoice == "rock") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 3)
+                    {
+                        string option = "Scissors";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "rock") Win(ref userWin);
+                        if (userChoice == "scissors") Draw();
+                        if (userChoice == "paper") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+
+                } while (userWin < 3 && enemyWin < 3);
+
+                //announce winner
+                if (userWin == 3)
+                {
+                    Console.WriteLine("\nYou won the game!");
+                }
+                else if (enemyWin == 3)
+                {
+                    Console.WriteLine("\nYou lost the game!");
+                }
+            }
+            else if (gameChoice == 5)
+            {
+                do
+                {
+                    //get user to select
+                    Console.Write("\nRock Paper Scissors Shoot!       ");
+                    string userChoice = Console.ReadLine().ToLower();
+
+                    //choose enemy's option 
+                    int enemyChoice = rand.Next(1, 4);
+
+                    if (enemyChoice == 1)
+                    {
+                        string option = "Rock";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "paper") Win(ref userWin);
+                        if (userChoice == "rock") Draw();
+                        if (userChoice == "scissors") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 2)
+                    {
+                        string option = "Paper";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "scissors") Win(ref userWin);
+                        if (userChoice == "paper") Draw();
+                        if (userChoice == "rock") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 3)
+                    {
+                        string option = "Scissors";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "rock") Win(ref userWin);
+                        if (userChoice == "scissors") Draw();
+                        if (userChoice == "paper") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+
+                } while (userWin < 5 && enemyWin < 5);
+                
+
+                //announce winner
+                if (userWin == 5)
+                {
+                    Console.WriteLine("\nYou win!");
+                }
+                else if (enemyWin == 5)
+                {
+                    Console.WriteLine("\nYou lose!");
+                }
+            }
+            if (gameChoice == 10)
+            {
+                do
+                {
+                    //get user to select
+                    Console.Write("\nRock Paper Scissors Shoot!       ");
+                    string userChoice = Console.ReadLine().ToLower();
+
+                    //choose enemy's option 
+                    int enemyChoice = rand.Next(1, 4);
+
+                    if (enemyChoice == 1)
+                    {
+                        string option = "Rock";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "paper") Win(ref userWin);
+                        if (userChoice == "rock") Draw();
+                        if (userChoice == "scissors") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 2)
+                    {
+                        string option = "Paper";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "scissors") Win(ref userWin);
+                        if (userChoice == "paper") Draw();
+                        if (userChoice == "rock") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+                    else if (enemyChoice == 3)
+                    {
+                        string option = "Scissors";
+                        Console.Write($"\nHere I go: {option}");
+
+                        if (userChoice == "rock") Win(ref userWin);
+                        if (userChoice == "scissors") Draw();
+                        if (userChoice == "paper") Lose(ref enemyWin);
+
+                        //show scoreline
+                        Console.WriteLine($"\nYOU: {userWin}        CPU: {enemyWin}");
+                    }
+
+                } while (userWin < 10 && enemyWin < 10);
+
+                //announce winner
+                if (userWin == 10)
+                {
+                    Console.WriteLine("\nYou won the game!");
+                }
+                else if (enemyWin == 10)
+                {
+                    Console.WriteLine("\nYou lost the game!");
+                }
+            }
+
+        }
+
+        static void Win(ref int userWin)
+        {
+            Console.WriteLine("\nYou win!");
+            userWin++;
+        }
+
+        static void Draw()
+        {
+            Console.WriteLine("\nDraw!");
+        }
+
+        static void Lose(ref int enemyWin)
+        {
+            Console.WriteLine("\nYou lose!");
+            enemyWin++;
+        }
+    }
+}
